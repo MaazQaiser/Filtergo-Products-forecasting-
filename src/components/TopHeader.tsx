@@ -7,7 +7,6 @@ import {
   IconButton,
   Divider,
   Avatar,
-  Stack,
   Tab,
   Tabs,
 } from '@mui/material';
@@ -21,7 +20,7 @@ import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import TuneIcon from '@mui/icons-material/Tune';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import { colors, shape } from '../theme/designTokens';
+import { colors } from '../theme/designTokens';
 import ForecastingDrawer from './ForecastingDrawer';
 
 type ViewMode = 'Day' | 'Week' | 'Month';
@@ -69,8 +68,8 @@ const TopHeader: React.FC = () => {
           </Typography>
         </Box>
 
-        <Stack direction="row" spacing={2.5} alignItems="center" sx={{ minWidth: 0, ml: 'auto', justifyContent: 'center' }}>
-          <Stack direction="row" spacing={1.5} alignItems="center">
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2.5, minWidth: 0, ml: 'auto', justifyContent: 'center' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
             <Box sx={badgeSx}>
               <Typography sx={txt({ fontSize: 12, fontWeight: 500, lineHeight: '18px' })}>US Central Time</Typography>
             </Box>
@@ -95,18 +94,18 @@ const TopHeader: React.FC = () => {
             >
               #709 Columbus, Georgia
             </Button>
-          </Stack>
+          </Box>
 
-          <Stack direction="row" spacing={0.25} alignItems="center">
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
             <IconButton size="small" sx={{ color: colors.textSecondary01 }}>
               <NotificationsOutlinedIcon sx={{ fontSize: 16 }} />
             </IconButton>
             <IconButton size="small" sx={{ color: colors.textSecondary01 }}>
               <ChatOutlinedIcon sx={{ fontSize: 16 }} />
             </IconButton>
-          </Stack>
+          </Box>
 
-          <Stack direction="row" spacing={0.75} alignItems="center" sx={{ cursor: 'pointer' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, cursor: 'pointer' }}>
             <Avatar sx={{ width: 32, height: 32, bgcolor: colors.brandSubtle, color: colors.brand, fontSize: 14, fontWeight: 500 }}>
               MS
             </Avatar>
@@ -119,8 +118,8 @@ const TopHeader: React.FC = () => {
               </Typography>
             </Box>
             <ExpandMoreIcon sx={{ fontSize: 14, color: colors.textSecondary03, mt: '-10px' }} />
-          </Stack>
-        </Stack>
+          </Box>
+        </Box>
       </Box>
 
       <Box
@@ -188,7 +187,7 @@ const TopHeader: React.FC = () => {
             ))}
           </Tabs>
 
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: '2px', justifySelf: 'end' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: '2px', justifySelf: 'end' }}>
             <Button
               variant="text"
               size="small"
@@ -229,11 +228,11 @@ const TopHeader: React.FC = () => {
             >
               Create
             </Button>
-          </Stack>
+          </Box>
         </Box>
 
         <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 1.5, flexWrap: 'wrap' }}>
-          <Stack direction="row" spacing={0.75} alignItems="center" sx={{ flexWrap: 'wrap' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, flexWrap: 'wrap' }}>
             <Button
               size="small"
               startIcon={<SearchIcon sx={{ fontSize: 14 }} />}
@@ -281,9 +280,9 @@ const TopHeader: React.FC = () => {
             >
               Filters
             </Button>
-          </Stack>
+          </Box>
 
-          <Stack direction="row" spacing={1} alignItems="center">
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Button
               variant="outlined"
               startIcon={<ChevronLeftIcon sx={{ fontSize: 14 }} />}
@@ -339,7 +338,7 @@ const TopHeader: React.FC = () => {
               </Button>
             ))}
           </ButtonGroup>
-          </Stack>
+          </Box>
         </Box>
       </Box>
       <ForecastingDrawer open={forecastOpen} onClose={() => setForecastOpen(false)} />

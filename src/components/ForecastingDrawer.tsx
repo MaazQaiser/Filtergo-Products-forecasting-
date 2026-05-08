@@ -98,14 +98,16 @@ const ForecastingDrawer: React.FC<Props> = ({ open, onClose }) => {
       anchor="right"
       open={open}
       onClose={onClose}
-      PaperProps={{
-        id: DRAWER_ID,
-        sx: {
-          width: 900,
-          display: 'flex',
-          flexDirection: 'column',
-          fontFamily: '"Inter", sans-serif',
-          bgcolor: colors.surfaceWhite,
+      slotProps={{
+        paper: {
+          id: DRAWER_ID,
+          sx: {
+            width: 900,
+            display: 'flex',
+            flexDirection: 'column',
+            fontFamily: '"Inter", sans-serif',
+            bgcolor: colors.surfaceWhite,
+          },
         },
       }}
     >
@@ -187,7 +189,6 @@ const ForecastingDrawer: React.FC<Props> = ({ open, onClose }) => {
               slotProps={{
                 textField: {
                   variant: 'standard',
-                  InputProps: { disableUnderline: true },
                   sx: {
                     width: 100,
                     cursor: 'pointer',
@@ -201,6 +202,9 @@ const ForecastingDrawer: React.FC<Props> = ({ open, onClose }) => {
                       cursor: 'pointer',
                     },
                     '& .MuiPickersInputBase-root::before, & .MuiPickersInputBase-root::after': {
+                      display: 'none',
+                    },
+                    '& .MuiInputBase-root:before, & .MuiInputBase-root:after': {
                       display: 'none',
                     },
                   },
@@ -226,7 +230,6 @@ const ForecastingDrawer: React.FC<Props> = ({ open, onClose }) => {
               slotProps={{
                 textField: {
                   variant: 'standard',
-                  InputProps: { disableUnderline: true },
                   sx: {
                     width: 100,
                     cursor: 'pointer',
@@ -240,6 +243,9 @@ const ForecastingDrawer: React.FC<Props> = ({ open, onClose }) => {
                       cursor: 'pointer',
                     },
                     '& .MuiPickersInputBase-root::before, & .MuiPickersInputBase-root::after': {
+                      display: 'none',
+                    },
+                    '& .MuiInputBase-root:before, & .MuiInputBase-root:after': {
                       display: 'none',
                     },
                   },

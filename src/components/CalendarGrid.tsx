@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { WEEK_DAYS, ROW_GROUPS } from '../data/scheduleData';
 import ScheduleCard from './ScheduleCard';
 import { colors, spacing } from '../theme/designTokens';
