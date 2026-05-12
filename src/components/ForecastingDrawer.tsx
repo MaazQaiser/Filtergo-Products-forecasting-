@@ -102,7 +102,7 @@ const ForecastingDrawer: React.FC<Props> = ({ open, onClose }) => {
         paper: {
           id: DRAWER_ID,
           sx: {
-            width: 900,
+            width: 680,
             display: 'flex',
             flexDirection: 'column',
             fontFamily: '"Inter", sans-serif',
@@ -190,7 +190,7 @@ const ForecastingDrawer: React.FC<Props> = ({ open, onClose }) => {
                 textField: {
                   variant: 'standard',
                   sx: {
-                    width: 100,
+                    width: 82,
                     cursor: 'pointer',
                     pointerEvents: 'none',
                     '& .MuiPickersSectionList-root, & input': {
@@ -231,7 +231,7 @@ const ForecastingDrawer: React.FC<Props> = ({ open, onClose }) => {
                 textField: {
                   variant: 'standard',
                   sx: {
-                    width: 100,
+                    width: 86,
                     cursor: 'pointer',
                     pointerEvents: 'none',
                     '& .MuiPickersSectionList-root, & input': {
@@ -273,29 +273,53 @@ const ForecastingDrawer: React.FC<Props> = ({ open, onClose }) => {
         <Typography sx={txt({ fontSize: 14, color: colors.textSecondary01, lineHeight: '20px', mb: '10px' })}>
           To execute jobs in this duration you need:
         </Typography>
-        {/* Column headers */}
-        <Box sx={{ display: 'grid', gridTemplateColumns: '28px 1fr 80px', alignItems: 'center', px: '2px', mb: '4px' }}>
-          <Box />
-          <Typography sx={txt({ fontSize: 11, fontWeight: 600, color: colors.textSecondary03, letterSpacing: '0.05em' })}>
-            Product
-          </Typography>
-          <Typography sx={txt({ fontSize: 11, fontWeight: 600, color: colors.textSecondary03, letterSpacing: '0.05em', textAlign: 'right' })}>
-            Qty
-          </Typography>
-        </Box>
-        {/* Numbered rows */}
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-          {FILTER_SKUS.map((sku, i) => (
-            <Box key={sku} sx={{ display: 'grid', gridTemplateColumns: '28px 1fr 80px', alignItems: 'center', py: '6px', borderBottom: `1px solid ${colors.borderSubtle}` }}>
-              <Typography sx={txt({ fontSize: 12, color: colors.textSecondary03, fontWeight: 500 })}>
-                {i + 1}.
-              </Typography>
-              <Typography sx={txt({ fontSize: 13, fontWeight: 600, color: colors.textPrimary })}>
-                {sku}
-              </Typography>
-              <Typography sx={txt({ fontSize: 14, fontWeight: 800, color: colors.green600, textAlign: 'right' })}>
-                {totalsByProduct[sku] ?? 0}
-              </Typography>
+        {/* Summary row */}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+            alignItems: 'center',
+            height: 80,
+            borderTop: `1px solid ${colors.borderSubtle}`,
+            borderBottom: `1px solid ${colors.borderSubtle}`,
+            bgcolor: colors.surfaceWhite,
+          }}
+        >
+          {FILTER_SKUS.map((sku) => (
+            <Box
+              key={sku}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+                gap: '4px',
+                height: '100%',
+                px: '16px',
+                position: 'relative',
+                '&:not(:last-of-type)::after': {
+                  content: '""',
+                  position: 'absolute',
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  width: '1px',
+                  bgcolor: colors.borderSubtle,
+                },
+              }}
+            >
+              <Box sx={{ minWidth: 0, textAlign: 'left' }}>
+                <Box sx={{ minWidth: 0 }}>
+                  <Typography sx={txt({ fontSize: 14, fontWeight: 500, color: colors.textPrimary, lineHeight: '20px' })} noWrap>
+                    {sku}
+                  </Typography>
+                </Box>
+              </Box>
+              <Box sx={{ textAlign: 'left', flexShrink: 0 }}>
+                <Typography sx={txt({ fontSize: 14, fontWeight: 500, color: colors.green600, lineHeight: '20px' })}>
+                  {totalsByProduct[sku] ?? 0}
+                </Typography>
+              </Box>
             </Box>
           ))}
         </Box>
@@ -357,7 +381,7 @@ const ForecastingDrawer: React.FC<Props> = ({ open, onClose }) => {
         </Box>
 
         {rows.length === 0 ? (
-          <Box sx={{ px: '32px', py: '32px', textAlign: 'center' }}>
+          <Box sx={{ px: '82px', py: '32px', textAlign: 'center' }}>
             <Typography sx={txt({ fontSize: 13, color: colors.textPlaceholder })}>
               No jobs found for the selected date range.
             </Typography>
